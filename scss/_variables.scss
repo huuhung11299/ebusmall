@@ -1,0 +1,47 @@
+$main-color: #72cc3d;
+$main-color-2: #1ca95b;
+$main-color-3: #454d66;
+$main-color-4: #4dbd4a;
+$main-color-5: #50ad4e;
+@mixin max-media($point) {
+    @media screen and (max-width: $point) {
+        @content;
+    }
+}
+@mixin min-media($point) {
+    @media screen and (min-width: $point) {
+        @content;
+    }
+}
+@mixin line-clamp($line, $height: auto) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: $line;
+    height: $height;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+@mixin clear-fix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+@mixin linear-background {
+    background-image: linear-gradient(
+        to bottom,
+        $main-color,
+        $main-color-2,
+        $main-color-2,
+        $main-color
+    );
+    background-size: auto 300%;
+    background-position-y: 0%;
+    transition: 0.4s;
+    color: #fff;
+    &:hover {
+        color: #fff;
+        background-position-y: calc(100% + 1px);
+    }
+}
